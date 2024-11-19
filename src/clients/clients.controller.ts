@@ -19,7 +19,6 @@ export class ClientsController {
 
   @Get('all')
   findAll(): Promise<Client[]> {
-    console.log('Buscando todos os clientes... findAll');
     return this.clientsService.findAll({});
   }
 
@@ -27,7 +26,6 @@ export class ClientsController {
   async getClients(
     @Query('selecionado') selecionado?: boolean,
   ): Promise<Client[]> {
-    console.log('Buscando todos os clientes... getClients');
     return this.clientsService.findAll({ selecionado });
   }
 
@@ -52,7 +50,6 @@ export class ClientsController {
     if (selecionado === undefined) {
       throw new BadRequestException('O campo "selecionado" é obrigatório.');
     }
-    console.log(selecionado);
     return this.clientsService.updateSelecionado(+id, selecionado);
   }
 
